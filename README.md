@@ -10,7 +10,7 @@ The github repository for my internship application at KreiosLabs
   - [Built with](#built-with)
 - [Author](#author)
 
-## How to run
+## How to run  (incomplete)
 - npm run dev
 - npm run deploy
 
