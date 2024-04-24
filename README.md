@@ -1,4 +1,4 @@
-# Pokedex 
+# Pokedex (under development)
 The github repository for my internship application at KreiosLabs
 
 ## Table of contents
@@ -8,37 +8,55 @@ The github repository for my internship application at KreiosLabs
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
+  - [To do](#to-do)
 - [Author](#author)
 
-## How to run  (incomplete)
-- npm run dev
-- npm run deploy
+## How to run
+1. Clone the repository
+2. Use `npm i` to install the node modules
+3. Use `npm run dev` to run the webapp
+4. Access on browser through http://localhost:5173/
+
+### Requirements
+* [git](https://git-scm.com/downloads)
+* [node.js](https://nodejs.org/en)
+<!-- - npm run deploy -->
 
 
-## Overview
+## Overview 
 
-### Screenshot
+### Screenshot (TBD)
 
-<!-- ![Screenshot]() -->
+![Screenshot](/screenshots/0.3.0.jpeg)
 
 ### Links
 
 - Design: [Canva](https://www.canva.com/design/DAGDMfJWAl8/9-FnAhwFjJvwG5uis2lIXA/edit)
-- Live Site URL: 
+- Live Site URL: (TBD)
 
 ## My process
-I built this project with React and Tailwind CSS.
+I'm building this project with React, Tailwind, and Firebase. I'm currently building it in a function before form approach, so I'll try to make it look better once I've implemented all the technical stuff.
 
 ### Built with
 
 - HTML
 - CSS
-- Flexbox
 - Tailwind CSS
 - React
 - Vite
+- Firebase
+
+### To do
+
+- Implement descending order for both sort types
+- Implement id search function
+- Implement display more data on pokemon card press
+- Better UI design
+  - Card color based on type
+  - Cards show type icon
+- Who's that pokemon mini game: button that shows random pokemon silhouette 
 
 ## Author
-
+Francis Glenn Hernandez
 - [LinkedIn](https://www.linkedin.com/in/fgdhernandez/)
 

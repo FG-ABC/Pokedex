@@ -8,6 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 IS
 PA
+PD
 node_modules
 dist
 dist-ssr

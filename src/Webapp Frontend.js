@@ -4,7 +4,7 @@ import { query, orderBy, limit, where, startAfter } from "firebase/firestore";
 //The purpose of this code is to test data collection from the firebase database.
 
 //Section: Configs
-const pokemonPerPage = 1;
+const pokemonPerPage = 1000;
 const sortType = "name"; //or Myid
 const firebaseConfig = {
   apiKey: "AIzaSyAju9Io9rjlnPWsQxCeGaPf3fpLxFYbnqM",
@@ -22,13 +22,13 @@ const db = getFirestore(app);
 const pokeCollection = collection(db, "Pokedata"); 
 var lastItem;
 
-console.log(await readFromDatabase(sortType));
-console.log(await readFromDatabase(sortType, lastItem));
+// console.log(await readFromDatabasesort(sortType));
+// console.log(await readFromDatabasesort(sortType, lastItem));
 
+// console.log(await readFromDatabaseSearch("el"))
 
-
-//Section: functions
-async function readFromDatabase(sort_type, last_item = null){
+//Section: functions 
+async function readFromDatabasesort(sort_type, last_item = null){
   var data = [];
   if (last_item){
     var querySnapshot = await getDocs(query(pokeCollection,  orderBy(sort_type, "asc"), startAfter(last_item), limit(pokemonPerPage)));
@@ -42,3 +42,11 @@ async function readFromDatabase(sort_type, last_item = null){
   return data
 };
 
+async function readFromDatabaseSearch(queryText){
+  var data = [];
+  var querySnapshot = await getDocs(query(pokeCollection,where('name', '<=', queryText+ '\uf8ff'), where('name', '>=', queryText), orderBy("Myid", "asc"), limit(pokemonPerPage)));
+  querySnapshot.forEach((doc) => {
+    data.push(doc.data().name);
+  });
+  return data
+};
