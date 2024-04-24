@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, query, orderBy, limit, where} from "firebase/firestore"; 
+import { getFirestore, collection, getDocs, query, orderBy, limit, where, startAfter} from "firebase/firestore"; 
 import PokeList from "./components/PokeList";
 import Loader from "./components/Loader";
 
@@ -22,9 +22,13 @@ const db = getFirestore(app);
 const pokeCollection = collection(db, "Pokedata"); 
 
 //Section: functions 
-async function readFromDatabase(page_num){
+async function readFromDatabase(sort_type, last_item){
     var data = [];
-    const querySnapshot = await getDocs(query(pokeCollection, where("Myid", ">", page_num * 20), orderBy("Myid", "asc"), limit(pokemonPerPage)));
+    if (last_item){
+      var querySnapshot = await getDocs(query(pokeCollection,  orderBy(sort_type, "asc"), startAfter(last_item), limit(pokemonPerPage)));
+    } else{
+      var querySnapshot = await getDocs(query(pokeCollection,  orderBy(sort_type, "asc"), limit(pokemonPerPage)));
+    }
     querySnapshot.forEach((doc) => {
       data.push(doc.data());
     });
@@ -36,19 +40,24 @@ const App = () => {
 
     //Subsection: State variables
     const [pokeData, setpokeData] = useState([]);
+    const [lastItem, setLastItem] = useState(null);
     const [page, setPage] = useState(pageInit);
     const [loading, setLoading] = useState(false);
+    const [sortID, setSortID] = useState(true);
 
     //On page load and When page changes get 20 items from database
     useEffect(() => {
         setTimeout(async () => {
-            const response = await readFromDatabase(page);
+            var sort_type;
+            sortID?  sort_type = "Myid" :  sort_type = "name";
+            const response = await readFromDatabase(sort_type, lastItem);
+            setLastItem(response[response.length - 1][sort_type]);
             setpokeData((prev) => {
                 return [...prev, ...response];
             });
             setLoading(false);
-        }, 500);
-    }, [page]);
+        }, 250);
+    }, [page, sortID]);
 
     //Give window scroll handler
     useEffect(() => {
@@ -68,9 +77,31 @@ const App = () => {
         }
     };
 
+    //Change sorting type
+    const handleClick = (e) => {
+        const button = e.target.value;
+        if ((button === "name")&&(sortID)){
+            setSortID(!sortID);
+            setPage(0);
+            setpokeData([]);
+            setLastItem(null);
+        } else if ((button === "id")&&(!sortID)){
+            setSortID(!sortID);
+            setPage(0);
+            setpokeData([]);
+            setLastItem(null);
+        };
+
+    };
+
     return (
-        <div className=''>
-            <h1 className="mt-5 text-center text-6xl ">Pokedex</h1>
+        <div className='flex flex-col items-center'>
+            <h1 className="mt-24 text-center text-8xl">Pokedex</h1>
+            <div className="flex w-3/5 justify-center gap-24 text-5xl p-6 rounded-3xl bg-slate-500">
+                <label className="p-5">Sort by:</label>
+                <button value="id" className={ `p-5 ${sortID ? "bg-slate-800": ""}` } onClick={handleClick}>by ID</button>
+                <button value="name" className={ `p-5 ${!sortID ? "bg-slate-800": ""}` } onClick={handleClick}>by Name</button>
+            </div>
             <PokeList pokeData={pokeData} />
             {loading && <Loader />}
         </div>
