@@ -8,7 +8,7 @@ const PokeList = ({ pokeData }) => {
                 return (
                     <PokeCard
                         key={index}
-                        id = {data.Myid}
+                        id = {data.id}
                         name={data.name}
                     />
                 );

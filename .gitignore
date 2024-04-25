@@ -6,9 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-IS
-PA
-PD
 node_modules
 dist
 dist-ssr
@@ -24,3 +21,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Test files
+IS
+PA
+PD
+Webapp Backend.js
+Webapp Frontend.js
