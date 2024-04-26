@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import PokeList from "./components/PokeList";
 import Loader from "./components/Loader";
 
+import "./App.css"
 import "./components/Modal.css";
+import Pokeball from "./assets/pokeball.svg";
 import datalistbyid from "./datalistbyid.js";
 import datalistbyname from "./datalistbyname.js";
 
@@ -50,11 +52,11 @@ const App = () => {
             response = datalistbyid:
             response = datalistbyname;
             
+
             if (search != ""){
-                console.log(search);
                 isNaN(search)?
                 response = response.filter((item) => item.name.includes(search)):
-                response = response.filter((item) => item.id.includes(search));
+                response = response.filter((item) => (`${item.id}`).includes(search));
             };
 
             response = response.slice(page * pokemonPerPage, (page * pokemonPerPage) + pokemonPerPage);
@@ -83,6 +85,7 @@ const App = () => {
     //Subsection: Searching Pokelist
     const handleSearch = (e) =>{
         const queryText = e.target.value.toLowerCase();
+        console.log(queryText);
         setPage(0);
         setpokeData([]);
         setSearch(queryText);
@@ -119,43 +122,52 @@ const App = () => {
         setDetailData(PokemonData);
     }
 
-    return (
-        <div className='flex flex-col items-center'>
-            {/* Modal popup */}
+    return (   
+        <div className='flex flex-col items-center w-100vw'>
+            {/* Modal Popup */}
             {detailView &&
                 <div className="modal">
                     <div onClick={toggleView} className="overlay"></div>
-                    <div className="modal-content w-8/12 h-56 text-center flex flex-col justify-center">
+                    <div className="modal-content w-8/12 h-56 text-center flex justify-center">
                         <button onClick={prevPokemon} className="text-black">Previous</button>
-                        <h2>My name is {detailData.name} </h2>
-                        <h2>And my id is {detailData.id}</h2>
+                        <span className="flex flex-col justify-center items-center">
+                            <h2>My name is {detailData.name} </h2>
+                            <h2>And my id is {detailData.id}</h2>
+                        </span>
                         <button onClick={nextPokemon} className="text-black">Next</button>
                     </div>
                     
                 </div>
             }
 
-            {/* Search */}
-            <div className="mt-10 text-5xl flex gap-10">
-                <label>Search:</label>
-                <input id="search" className="text-black" onChange={handleSearch} ></input>
+            {/* Header */}
+            <header className="flex justify-center w-full h-24 p-2 sm:h-32 sm:p-4 lg:p-6 ">
+                <h1 className="text-4xl text-center mx-5 sm:text-5xl lg:text-6xl lg:pt-3">Pokedex Project</h1>
+            </header>
+            
+            <div className="sm:w-8/12 md:w-10/12 flex flex-col items-center">
+
+                {/* Search and Sort */}
+                <div className="flex flex-col items-center w-full mt-5 p-5 md:w-10/12">
+                    <label className="mx-5 lg:text-4xl">Search Pokemon</label>
+                    <input className="w-11/12 rounded-2xl mt-3 h-8 px-3 lg:h-16 lg:text-4xl" onChange={handleSearch}></input>
+                    <label className="mx-5 lg:text-4xl mt-3">Sort By</label>
+                    <span className="flex justify-evenly w-full mt-3">
+                        <button value="id" className={ `${sortID ? "activeSort" : ""}` } onClick={handleClick}>ID</button>
+                        <button value="name" className={ `${!sortID ? "activeSort": ""}` } onClick={handleClick}>Name</button>
+                    </span>
+                </div> 
+
+
+                {/* Pokelist */}
+                <div>
+                    <PokeList pokeData={pokeData} detailViewActivate = {toggleView} />
+                    {loading && <Loader />}
+                </div>
+            
             </div>
 
-            {/* Title */}
-            <h1 className="mt-12 text-center text-8xl">Pokedex</h1>
-            
-            {/* Sort */}
-            <div className="flex w-3/5 justify-center gap-24 text-5xl p-6 rounded-3xl bg-slate-500">
-                <label className="p-5">Sort by:</label>
-                <button value="id" className={ `p-5 ${sortID ? "bg-slate-800": ""}` } onClick={handleClick}>by ID</button>
-                <button value="name" className={ `p-5 ${!sortID ? "bg-slate-800": ""}` } onClick={handleClick}>by Name</button>
-            </div>
 
-            {/* Main */}
-            <PokeList pokeData={pokeData} detailViewActivate = {toggleView} />
-            
-            {/* Loading */}
-            {loading && <Loader />}
         </div>
     );
 };

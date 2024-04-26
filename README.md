@@ -1,4 +1,4 @@
-# Pokedex 0.4.0 (under development)
+# Pokedex 0.4.1 (under development)
 The github repository for my internship application at KreiosLabs
 
 ## Table of contents
@@ -24,10 +24,12 @@ The github repository for my internship application at KreiosLabs
 
 
 ## Overview 
+A Pokedex website that stores all 1025 pokemon from the PokemonAPI. Features include: Live search based on id and name, and sorting based on id and name.
+
 
 ### Screenshot (TBD)
 
-![Screenshot](/screenshots/0.3.0.jpeg)
+![Screenshot](/screenshots/0.4.1.jpeg)
 
 ### Links
 
@@ -48,6 +50,7 @@ I'm building this project with React and Tailwind. I'm currently building it in 
 
 ### To do
 
+- Add more details to modal popup
 - Implement descending order for both sort types
 - Better UI design
   - Card color based on type

@@ -1,0 +1,29 @@
+html, body{
+    width: 100%;
+    overflow-x: hidden;
+    background: rgb(121, 185, 206);
+}
+
+header{
+    background-color: #234065;
+}
+
+header>h1{
+    color: #FDCC03;
+    text-shadow: 5px 5px 5px #3967A5;
+}
+
+input, input:active{
+    background-color: #5f98c6;
+    border: 2px solid #234065;
+}
+
+button{
+    width: 130px; 
+    padding: 5px 20px;
+    border: 2px solid #234065;
+}
+
+.activeSort{
+    background-color: #5f98c6; 
+}
