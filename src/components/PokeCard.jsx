@@ -1,9 +1,9 @@
 import React from "react";
 import "./PokeCard.css";
 
-const PokeCard = ({ id, name }) => {
+const PokeCard = ({ id, name, detailViewActivate }) => {
     return (
-        <div className='card'>
+        <div className='card' onClick={() => detailViewActivate(id)}>
             <div className='card_image'>
                 <img src={
                     //For animated gifs -> `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`

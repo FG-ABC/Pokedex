@@ -1,7 +1,7 @@
 import React from "react";
 import PokeCard from "./PokeCard";
 
-const PokeList = ({ pokeData }) => {
+const PokeList = ({ pokeData , detailViewActivate}) => {
     return (
         <div className='flex flex-wrap items-center justify-center'>
             {pokeData.map((data, index) => {
@@ -10,6 +10,7 @@ const PokeList = ({ pokeData }) => {
                         key={index}
                         id = {data.id}
                         name={data.name}
+                        detailViewActivate = {detailViewActivate}
                     />
                 );
             })}

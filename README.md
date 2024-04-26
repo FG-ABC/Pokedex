@@ -1,4 +1,4 @@
-# Pokedex (under development)
+# Pokedex 0.4.0 (under development)
 The github repository for my internship application at KreiosLabs
 
 ## Table of contents
@@ -49,11 +49,11 @@ I'm building this project with React and Tailwind. I'm currently building it in 
 ### To do
 
 - Implement descending order for both sort types
-- Implement display more data on pokemon card press
 - Better UI design
   - Card color based on type
   - Cards show type icon
 - Who's that pokemon mini game: button that shows random pokemon silhouette 
+- Show strengths and weaknesses of each pokemon
 
 ## Author
 Francis Glenn Hernandez
