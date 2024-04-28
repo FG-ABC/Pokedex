@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import PokeList from "./components/PokeList";
 import Loader from "./components/Loader";
+import Modal from "./components/Modal.jsx";
 
 import "./App.css"
-import "./components/Modal.css";
-import Pokeball from "./assets/pokeball.svg";
+
 import datalistbyid from "./datalistbyid.js";
 import datalistbyname from "./datalistbyname.js";
 
@@ -126,18 +126,12 @@ const App = () => {
         <div className='flex flex-col items-center w-100vw'>
             {/* Modal Popup */}
             {detailView &&
-                <div className="modal">
-                    <div onClick={toggleView} className="overlay"></div>
-                    <div className="modal-content w-8/12 h-56 text-center flex justify-center">
-                        <button onClick={prevPokemon} className="text-black">Previous</button>
-                        <span className="flex flex-col justify-center items-center">
-                            <h2>My name is {detailData.name} </h2>
-                            <h2>And my id is {detailData.id}</h2>
-                        </span>
-                        <button onClick={nextPokemon} className="text-black">Next</button>
-                    </div>
-                    
-                </div>
+                <Modal
+                toggleView = {toggleView}
+                prevPokemon = {prevPokemon}
+                nextPokemon = {nextPokemon} 
+                detailData = {detailData}
+                />
             }
 
             {/* Header */}
@@ -145,6 +139,7 @@ const App = () => {
                 <h1 className="text-4xl text-center mx-5 sm:text-5xl lg:text-6xl lg:pt-3">Pokedex Project</h1>
             </header>
             
+
             <div className="sm:w-8/12 md:w-10/12 flex flex-col items-center">
 
                 {/* Search and Sort */}

@@ -19,6 +19,10 @@
     transform: scale(1.1);
 }
 
+.card:active{
+    transform: scale(1);
+}
+
 .card_image {
     width: 100%;
     height: 50%;
@@ -36,13 +40,109 @@
 }
 
 .card_info h2 {
-    margin-bottom: 10px;
     color: black;
     font-size: small;
 }
 
 .card_info h3 {
     color: #272727;
-
+    margin-top: 6px;
     font-size: x-small;
+}
+
+
+/* Type Icon Styling */
+
+.icon {
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    margin:auto;
+    transition: 200ms all;
+}
+
+.icon:hover{
+    filter: saturate(200%);
+    transform: scale(1.1);
+    cursor: pointer;
+    
+}
+
+.icon img {
+    height: 60%;
+    width: 60%;
+    margin: 20%;
+}
+
+.bug {
+    background: #92BC2C;
+}
+
+.dark {
+    background: #595761;
+}
+
+.dragon {
+    background: #0C69C8;
+}
+
+.electric {
+    background: #F2D94E;
+}
+
+.fire {
+    background: #FBA54C;
+}
+
+.fairy {
+    background: #EE90E6;
+}
+
+.fighting {
+    background: #D3425F;
+}
+
+.flying {
+    background: #A1BBEC;
+}
+
+.ghost {
+    background: #5F6DBC;
+}
+
+.grass {
+    background: #5FBD58;
+}
+
+.ground {
+    background: #DA7C4D;
+}
+
+.ice {
+    background: #75D0C1;
+}
+
+.normal {
+    background: #A0A29F;
+}
+
+.poison {
+    background: #B763CF;
+}
+
+.psychic {
+    background: #FA8581;
+}
+
+.rock {
+    background: #C9BB8A;
+}
+
+.steel {
+    background: #5695A3;
+
+}
+
+.water {
+    background: #539DDF;
 }

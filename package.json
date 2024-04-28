@@ -1,8 +1,9 @@
 {
   "name": "pokedex",
   "private": true,
-  "version": "0.4.0",
+  "version": "0.4.2",
   "type": "module",
+  "author": "fg",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",

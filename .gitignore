@@ -23,8 +23,6 @@ dist-ssr
 *.sw?
 
 # Test files
-IS
-PA
-PD
+pkmn.help
 Webapp Backend.js
 Webapp Frontend.js

@@ -1,4 +1,4 @@
-# Pokedex 0.4.1 (under development)
+# Pokedex 0.4.2 (under development)
 The github repository for my internship application at KreiosLabs
 
 ## Table of contents
@@ -29,7 +29,7 @@ A Pokedex website that stores all 1025 pokemon from the PokemonAPI. Features inc
 
 ### Screenshot (TBD)
 
-![Screenshot](/screenshots/0.4.1.jpeg)
+![Screenshot](/screenshots/0.4.2.jpeg)
 
 ### Links
 
@@ -51,12 +51,15 @@ I'm building this project with React and Tailwind. I'm currently building it in 
 ### To do
 
 - Add more details to modal popup
+  - photo
+  - height, weight, abilities, types
+  - weaknesses
+  - base stats
+  - responsive design
 - Implement descending order for both sort types
-- Better UI design
-  - Card color based on type
-  - Cards show type icon
+- Implement filtering based on pokemon type
 - Who's that pokemon mini game: button that shows random pokemon silhouette 
-- Show strengths and weaknesses of each pokemon
+
 
 ## Author
 Francis Glenn Hernandez
