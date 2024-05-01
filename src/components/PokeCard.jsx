@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./PokeCard.css";
 import datalistbyid from "../datalistbyid";
 
@@ -31,14 +31,26 @@ const PokeCard = ({ id, name, detailViewActivate }) => {
         types.push(item.type.name)
     });
     
+    const [clicked, setClicked] = useState(false)
+
+    const tempRemoveHover = ()=>{
+        setClicked(true);
+        setTimeout(()=>{
+            setClicked(false);
+        }, 200)
+    }
+
     return (
-        <div className='card' onClick={() => detailViewActivate(id)}>
-            <div className='card_image'>
+        <div className={`card ${clicked&& "noHover"}`} onClick={() => {detailViewActivate(id); tempRemoveHover();}}>
+            {/* Card Image */}
+            <div className='card_image h-4/6'>
                 <img src={
                     `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`
                 } alt={name} />
             </div>
-            <div className='card_info pt-3'>
+
+            {/* Card Info */}
+            <div className='card_info pb-1'>
                 <span className='flex px-2 justify-between items-center'>
                     <div className="flex gap-1">
                     {types.map((type, index) => {
